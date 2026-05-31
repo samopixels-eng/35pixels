@@ -3,64 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Color Dots</title>
+    <title>35 Pixels</title>
+    <meta name="description" content="35 Pixels is an indie studio crafting simple, delightful casual mobile games.">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        h1 { border-bottom: 2px solid #333; padding-bottom: 10px; font-size: 2em; }
-        h2 { margin-top: 30px; color: #007bff; font-size: 1.5em; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        .footer { margin-top: 50px; font-size: 0.9em; color: #777; border-top: 1px solid #eee; padding-top: 20px; }
-        a { color: #007bff; text-decoration: none; }
+        :root {
+            --blue: #2f8bff;
+            --blue-dark: #1f6fe0;
+            --ink: #1c2330;
+            --muted: #6b7280;
+            --bg: #f7faff;
+            --card: #ffffff;
+            --border: #e6eef9;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+        a { color: var(--blue); text-decoration: none; }
         a:hover { text-decoration: underline; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header / Hero */
+        header {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px 35px;
+        }
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.9em;
+            letter-spacing: -0.5px;
+        }
+        .logo-dots { display: inline-flex; gap: 6px; }
+        .logo-dots span {
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; display: inline-block;
+        }
+        .logo-dots span:nth-child(2) { opacity: 0.7; }
+        .logo-dots span:nth-child(3) { opacity: 0.45; }
+        header p {
+            max-width: 560px;
+            margin: 20px auto 0;
+            font-size: 1.15em;
+            opacity: 0.95;
+        }
+
+        /* Slide banner — one image at a time, slides sideways */
+        .banner {
+            height: 440px;
+            overflow: hidden;
+            background: #0f1726;
+        }
+        .banner-track {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            animation: slide 8s infinite;
+        }
+        .slide {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide img {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        @keyframes slide {
+            0%, 45%   { transform: translateX(0); }
+            55%, 100% { transform: translateX(-50%); }
+        }
+        .banner:hover .banner-track { animation-play-state: paused; }
+
+        /* Sections */
+        section { padding: 60px 0; }
+        h2 {
+            font-size: 1.6em;
+            margin: 0 0 24px;
+            color: var(--ink);
+        }
+        .lead { color: var(--muted); max-width: 640px; font-size: 1.08em; }
+
+        /* Games */
+        .games { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .game-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 18px rgba(47, 139, 255, 0.06);
+        }
+        .game-icon {
+            width: 56px; height: 56px; border-radius: 14px;
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .game-icon span {
+            width: 14px; height: 14px; border-radius: 50%; background: #fff;
+            margin: 0 3px;
+        }
+        .game-icon span:last-child { opacity: 0.6; }
+        .game-icon-img {
+            width: 64px; height: 64px; border-radius: 14px;
+            object-fit: cover; display: block; margin-bottom: 16px;
+        }
+        .game-card h3 { margin: 0 0 8px; font-size: 1.25em; }
+        .game-card p { margin: 0 0 18px; color: var(--muted); }
+        .badge {
+            display: inline-block;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--blue-dark);
+            background: #eaf3ff;
+            border-radius: 999px;
+            padding: 6px 14px;
+        }
+
+        /* Contact */
+        .contact-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--blue);
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 26px;
+            border-radius: 999px;
+            margin-top: 14px;
+        }
+        .btn:hover { background: var(--blue-dark); text-decoration: none; }
+
+        /* Footer */
+        footer {
+            background: #0f1726;
+            color: #aab4c4;
+            font-size: 0.9em;
+            padding: 40px 0;
+        }
+        footer .biz { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px 32px; margin-bottom: 24px; }
+        footer .biz div { color: #cdd6e4; }
+        footer .biz span { color: #7b8697; }
+        footer .biz strong { color: #fff; font-weight: 600; }
+        .foot-bottom {
+            border-top: 1px solid #1e2a3d;
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        footer a { color: #7fb4ff; }
     </style>
 </head>
 <body>
 
-    <h1>Privacy Policy</h1>
-    <p>Last updated: May 6, 2026</p>
-    <p>This Privacy Policy describes how <strong>Color Dots</strong> ("the App") handles your information. By using the App, you agree to the collection and use of information in accordance with this policy.</p>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-dots"><span></span><span></span><span></span></span>
+                35 Pixels
+            </div>
+            <p>An indie studio crafting simple, delightful casual mobile games.</p>
+        </div>
+    </header>
 
-    <h2>1. Information Collection and Use</h2>
-    <p>The App does not collect or store any personally identifiable information (PII) directly. However, we use third-party services that may collect information used to identify you.</p>
-    <ul>
-        <li><strong>Log Data:</strong> In case of an error in the App, we collect data and information (through third-party products) on your phone called Log Data to help us improve the service.</li>
-        <li><strong>Device Identifiers:</strong> We may use advertising identifiers (such as Google Advertising ID or Apple IDFA) to provide personalized advertisements.</li>
-    </ul>
-
-    <h2>2. Third-Party Services</h2>
-    <p>The App uses third-party services that may collect data according to their own privacy policies. These services include:</p>
-    <ul>
-        <li><strong>Google AdMob:</strong> Used for providing advertisements. <br>
-            <a href="https://policies.google.com/privacy" target="_blank">&raquo; Google Privacy & Terms</a></li>
-        <li><strong>RevenueCat:</strong> Used for processing and validating in-app purchases. <br>
-            <a href="https://www.revenuecat.com/privacy" target="_blank">&raquo; RevenueCat Privacy Policy</a></li>
-    </ul>
-
-    <h2>3. In-App Purchases</h2>
-    <p>All financial transactions are processed through the <strong>Google Play Store</strong> (or Apple App Store). We do not collect or store your credit card numbers, bank account information, or any other financial data. We only receive a confirmation (receipt) from the store to unlock your purchased items.</p>
-
-    <h2>4. Children's Privacy</h2>
-    <p>This App is not intended for children under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us.</p>
-
-    <h2>5. Account and Data Deletion</h2>
-    <p>We respect your right to control your data. If you wish to delete your account or any personal information associated with the App, you may request deletion through the following methods:</p>
-    <ul>
-        <li><strong>Data Deletion Request Form:</strong> You can submit a formal request via our <a href="https://docs.google.com/forms/d/e/1FAIpQLSfshgcVKt5AF9T-GHcuAqAF2onIdhn-S9TqQ79oOETf-8priA/viewform?usp=publish-editor" target="_blank">Data Deletion Request Form</a>.</li>
-        <li><strong>Email:</strong> You can also contact us directly at <strong>choysowon@gmail.com</strong> to request data removal.</li>
-    </ul>
-    <p>For guest users (not logged in), please note that your data is stored locally on your device. You can delete this data at any time by uninstalling the App or clearing the App cache in your device settings.</p>
-
-    <h2>6. Changes to This Privacy Policy</h2>
-    <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. These changes are effective immediately after they are posted on this page.</p>
-
-    <h2>7. Contact Us</h2>
-    <p>If you have any questions or suggestions about this Privacy Policy, do not hesitate to contact us.</p>
-    <p>Email: <strong>choysowon@gmail.com</strong></p>
-
-    <div class="footer">
-        <p>&copy; 2026 Color Dots. All rights reserved.</p>
+    <div class="banner" aria-label="Color Dots banner">
+        <div class="banner-track">
+            <div class="slide"><img src="gamelist/colordots_intro.png" alt="Color Dots"></div>
+            <div class="slide"><img src="gamelist/colordots_intro.png" alt="" aria-hidden="true"></div>
+        </div>
     </div>
+
+    <section id="about">
+        <div class="container">
+            <h2>About</h2>
+            <p class="lead">
+                35 Pixels is an independent game studio focused on minimal, easy-to-pick-up
+                experiences. We believe great games don't need to be complicated — just one
+                clear idea, polished until it feels right.
+            </p>
+        </div>
+    </section>
+
+    <section id="games" style="background:#eef5ff;">
+        <div class="container">
+            <h2>Our Games</h2>
+            <div class="games">
+                <div class="game-card">
+                    <img class="game-icon-img" src="gamelist/colordots_app_icon.png" alt="Color Dots app icon">
+                    <h3>Color Dots</h3>
+                    <p>Can you connect the two dots? Play endless levels to your heart's content.</p>
+                    <span class="badge">Coming soon to Google Play</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-box">
+                <p class="lead" style="margin:0 auto;">
+                    Have a question, partnership idea, or feedback? We'd love to hear from you.
+                </p>
+                <a class="btn" href="mailto:choysowon@gmail.com">choysowon@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="biz">
+                <div><span>Business name</span><br><strong>35pix</strong></div>
+                <div><span>Representative</span><br><strong>Sowon Choi</strong></div>
+                <div><span>Business reg. no.</span><br><strong>298-27-01942</strong></div>
+                <div><span>Address</span><br><strong>174 Seongbok 2-ro, Suji-gu, Yongin-si, Gyeonggi-do, Republic of Korea</strong></div>
+            </div>
+            <div class="foot-bottom">
+                <span>&copy; 2026 35 Pixels. All rights reserved.</span>
+                <span><a href="privacy.html">Privacy Policy</a></span>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
