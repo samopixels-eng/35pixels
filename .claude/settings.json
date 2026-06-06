@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(git remote remove origin)",
+      "PowerShell(git remote add origin https://github.com/samopixels-eng/35pixels.git)",
+      "PowerShell(git push -u origin --all)",
+      "PowerShell(git push origin --tags)",
+      "PowerShell(git config --get credential.helper; \\(Get-Command gh -ErrorAction SilentlyContinue\\).Source)",
+      "PowerShell(\"protocol=https`nhost=github.com`n\" | git credential reject; Write-Output \"Credential erased \\(exit: $LASTEXITCODE\\)\")",
+      "PowerShell($input = \"protocol=https`nhost=github.com`n`n\"; $input | git credential reject; Write-Output \"exit: $LASTEXITCODE\")",
+      "PowerShell($cred = \"protocol=https`nhost=github.com`n\"; $cred | git credential reject; Write-Output \"exit: $LASTEXITCODE\")",
+      "PowerShell(@\\(\"protocol=https\", \"host=github.com\", \"\"\\) | git credential reject; Write-Output \"exit: $LASTEXITCODE\")",
+      "PowerShell(cmdkey /delete:LegacyGeneric:target=git:https://github.com; Write-Output \"exit: $LASTEXITCODE\")",
+      "PowerShell(git push -u origin --all; Write-Output \"exit: $LASTEXITCODE\")",
+      "PowerShell($env:GCM_INTERACTIVE='always'; $env:GIT_TERMINAL_PROMPT='1'; git -c credential.guiPrompt=true push -u origin --all; Write-Output \"exit: $LASTEXITCODE\")"
+    ]
+  }
+}
